@@ -1,14 +1,13 @@
 /* https://www.hackerrank.com/challenges/pairs/problem */
 
-function pairs(k, arr) {
-  const map = new Map();
-  for (let x of arr) {
-    map.set(x, (map.get(x) || 0) + 1);
+const pairs = (k, arr) => {
+  let count = 0;
+  const set = new Set();
+  for (let num of arr) {
+    if (set.has(num + k)) count++;
+    if (set.has(num - k)) count++;
+    set.add(num);
   }
 
-  return arr.reduce((pairs, cur, i, a) => {
-    if (map.has(cur + k)) pairs++;
-    if (map.has(cur - k)) pairs++;
-    return pairs;
-  }, 0) / 2;
-}
+  return count;
+};
