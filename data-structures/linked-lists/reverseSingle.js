@@ -4,7 +4,7 @@ function reverseSingle(head, prev = null) {
   if (head.next) {
     const nextHead = head.next;
     head.next = prev;
-    return reverse(nextHead, head);
+    return reverseSingle(nextHead, head);
   }
   head.next = prev;
   return head;
